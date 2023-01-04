@@ -1,4 +1,5 @@
 # REST API YaMDB
+[workflow](https://github.com/wenerikk5/yamdb_final/actions/workflows/main.yml/badge.svg)
 
 ### Описание:
 База отзывов на книги и музыку, доступ через API. Пользователи могут делиться мнением, оценивать произведения, смотреть отзывы других.
