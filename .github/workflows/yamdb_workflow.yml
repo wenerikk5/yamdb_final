@@ -69,8 +69,8 @@ jobs:
         script: |
           # Остановим все работающие сервисы и удалим контейнеры
           sudo docker-compose down -v
-          # Удалим существующий образ докерфайла
-          sudo docker image rm wenerikk/yamdb_final
+          # Обновим образ докерфайла
+          sudo docker pull wenerikk/yamdb_final
           # sudo docker run --rm -d -p 5000:5000 wenerikk/yamdb_final
           sudo docker-compose up -d
   send_message:

@@ -16,7 +16,7 @@ services:
       sh -c "python /app/manage.py makemigrations &&
              python /app/manage.py migrate &&
              python /app/manage.py collectstatic --noinput &&
-             python /app/manage.py loaddata /app/static/data/fixtures.json &&
+             pwd &&
              gunicorn --bind 0.0.0.0:8000 --workers 3 api_yamdb.wsgi:application"
     volumes:
       - static_value:/app/static/
