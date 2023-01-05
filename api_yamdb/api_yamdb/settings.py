@@ -2,7 +2,7 @@ import os
 from datetime import timedelta
 from dotenv import load_dotenv
 
-# UPDATED IMAGE!!! WITH CHECK LATEST!!!
+# UPDATED IMAGE!!! WITH CHECK LATEST!!! 100
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
