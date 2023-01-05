@@ -10,7 +10,7 @@ services:
       - ./.env
   web:
     container_name: web
-    image: wenerikk/yamdb_final:latest
+    image: wenerikk/api_yamdb:v.0
 #    build: ../
     command: >
       sh -c "python /app/manage.py makemigrations &&
