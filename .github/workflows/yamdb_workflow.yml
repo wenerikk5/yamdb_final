@@ -67,11 +67,10 @@ jobs:
         # passphrase: ${{ secrets.PASSPHRASE }} 
         # Если ваш ssh-ключ защищён фразой-паролем
         script: |
-          # Выполняет pull образа с DockerHub
-          # sudo docker pull wenerikk/yamdb_final
-          # остановка всех контейнеров
-          # sudo docker stop $(sudo docker ps -a -q)
+          # Остановим все работающие сервисы и удалим контейнеры
           sudo docker-compose down -v
+          # Удалим существующий образ докерфайла
+          sudo docker rm wenerikk/yamdb_final
           # sudo docker run --rm -d -p 5000:5000 wenerikk/yamdb_final
           sudo docker-compose up -d
   send_message:
