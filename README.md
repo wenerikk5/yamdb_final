@@ -49,7 +49,7 @@
   docker-compose up -d --build
 ```
 
-Импортировать данные из fixtures.json:
+Автоматически импортируются данные из fixtures.json. Можно добавить свои фикстуры и выполнить миграцию вручную (удалятся предыдущие записи):
 ```python3 manage.py shell
 # выполнить в открывшемся терминале:
 >>> from django.contrib.contenttypes.models import ContentType
