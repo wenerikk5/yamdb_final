@@ -54,11 +54,11 @@ jobs:
           with:
             push: true
             tags: wenerikk/yamdb_final:latest
-  deploy:
+  pre-deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
-    - name: executing remote ssh commands to deploy
+    - name: executing remote ssh commands to pre-deploy
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -71,8 +71,19 @@ jobs:
           sudo docker-compose down -v
           # Удалим существующий образ докерфайла
           sudo docker rm wenerikk/yamdb_final
-          # sudo docker run --rm -d -p 5000:5000 wenerikk/yamdb_final
-          sudo docker-compose up -d
+  deploy:
+    runs-on: ubuntu-latest
+    needs: pre-deploy
+    steps:
+    - name: executing remote ssh commands to deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        # passphrase: ${{ secrets.PASSPHRASE }} 
+        # Если ваш ssh-ключ защищён фразой-паролем
+        script: sudo docker-compose up -d
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
