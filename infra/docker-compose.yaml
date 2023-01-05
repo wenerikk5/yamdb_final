@@ -2,16 +2,16 @@ version: '3.8'
 
 services:
   db:
-    container_name: db
+    container_name: db-1
     image: postgres:14.0-alpine
     volumes:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
-    container_name: web
-    image: wenerikk/api_yamdb:v.0
-#    build: ../
+    container_name: web-1
+    image: wenerikk/yamdb_final:latest
+    # build: ../
     command: >
       sh -c "python /app/manage.py makemigrations &&
              python /app/manage.py migrate &&
@@ -26,6 +26,7 @@ services:
       - ./.env
 
   nginx:
+    container_name: nginx-1
     image: nginx:1.21.3-alpine
     ports:
       - "80:80"
