@@ -2,20 +2,21 @@ version: '3.8'
 
 services:
   db:
-    container_name: db-1
+    container_name: db
     image: postgres:14.0-alpine
     volumes:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
-    container_name: web-1
+    container_name: web
     image: wenerikk/yamdb_final:latest
-    # build: ../
+    restart: always
     command: >
       sh -c "python /app/manage.py makemigrations &&
              python /app/manage.py migrate &&
              python /app/manage.py collectstatic --noinput &&
+             python /app/manage.py loaddata app/static/data/fixtures.json &&
              gunicorn --bind 0.0.0.0:8000 --workers 3 api_yamdb.wsgi:application"
     volumes:
       - static_value:/app/static/
@@ -26,8 +27,9 @@ services:
       - ./.env
 
   nginx:
-    container_name: nginx-1
+    container_name: nginx
     image: nginx:1.21.3-alpine
+    restart: always
     ports:
       - "80:80"
     volumes:

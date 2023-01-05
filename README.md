@@ -1,5 +1,5 @@
 # REST API YaMDB
-[workflow](https://github.com/wenerikk5/yamdb_final/actions/workflows/main.yml/badge.svg)
+![DjangoREST](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white) ![GH Actions(https://github.com/wenerikk5/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 ### Описание:
 База отзывов на книги и музыку, доступ через API. Пользователи могут делиться мнением, оценивать произведения, смотреть отзывы других.
